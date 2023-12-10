@@ -7,6 +7,7 @@ let result = 0;
 let hitPosition;
 let currentTime = 10;
 
+// add mole to random squares
 function randomSquare() {
   squares.forEach((square) => {
     square.classList.remove("mole");
@@ -18,30 +19,33 @@ function randomSquare() {
   hitPosition = randomSquare.id;
 }
 
+// add hit position to result
 squares.forEach((square) => {
   square.addEventListener("mousedown", () => {
     if (square.id === hitPosition) {
       result++;
       score.textContent = result;
-      hitPosition = null;
     }
   });
 });
 
-function moveMole() {
-  let timerId = null;
-  timerId = setInterval(randomSquare, 1000);
-}
+//set interval for movement of random square
+const moveMoleTimerId = setInterval(randomSquare, 1000);
 
-moveMole();
+// set interval for contdown timer
+const countDownTimerId = setInterval(countDown, 1000);
 
 function countDown() {
   currentTime--;
   timeLeft.textContent = currentTime;
 
   if (currentTime == 0) {
+    alert("GAME OVER! Your final Score is " + result);
+
+    // stoping the timer
     clearInterval(countDownTimerId);
-    alert("GAME OVER! Your final Score is" + result);
+
+    // TODO: stopping the moving mole
+    clearInterval(moveMoleTimerId);
   }
 }
-let countDownTimerId = setInterval(countDown, 1000);
