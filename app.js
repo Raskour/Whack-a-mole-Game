@@ -30,7 +30,7 @@ squares.forEach((square) => {
 });
 
 //set interval for movement of random square
-const moveMoleTimerId = setInterval(randomSquare, 1000);
+const moveMoleTimerId = setInterval(randomSquare, 500);
 
 // set interval for contdown timer
 const countDownTimerId = setInterval(countDown, 1000);
