@@ -4,7 +4,7 @@ const score = document.querySelector("#score");
 const mole = document.querySelector(".mole");
 
 let result = 0;
-let hitPosition;
+let molePosition;
 let currentTime = 10;
 
 // add mole to random squares
@@ -16,13 +16,13 @@ function randomSquare() {
   let randomSquare = squares[Math.floor(Math.random() * 9)];
   randomSquare.classList.add("mole");
 
-  hitPosition = randomSquare.id;
+  molePosition = randomSquare.id;
 }
 
-// add hit position to result
+// make the mole clickable
 squares.forEach((square) => {
   square.addEventListener("mousedown", () => {
-    if (square.id === hitPosition) {
+    if (square.id === molePosition) {
       result++;
       score.textContent = result;
     }
